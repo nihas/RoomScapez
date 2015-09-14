@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:id="@+id/toolbar"-->
+        <!--android:minHeight="?attr/actionBarSize"-->
+        <!--android:background="?attr/colorPrimary"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+    <!--</android.support.v7.widget.Toolbar>-->
+
+    <RelativeLayout
+        android:id="@+id/toper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="#CCCCCC">
+
+        <!-- icon -->
+        <ImageView
+            android:id="@+id/item_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:contentDescription="icon"
+            android:scaleType="centerCrop"
+            android:src="@android:drawable/ic_menu_compass"
+            />
+
+        <!-- title -->
+        <TextView
+            android:id="@+id/item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:text="Auto detect city"
+            android:layout_marginLeft="8dp"
+            android:textSize="18dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/item_icon"
+            android:layout_toEndOf="@+id/item_icon" />
+
+
+
+    </RelativeLayout>
+
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toper"
+        />
+
+    <!--<android.support.v4.view.ViewPager-->
+        <!--android:id="@+id/pager"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@+id/tab"-->
+
+        <!--/>-->
+
+
+
+
+        <RelativeLayout
+            android:id="@+id/selectCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:visibility="gone"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bottom_selector_violet">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/pin"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/selectCityText"/>
+
+        <TextView
+            android:id="@+id/selectCityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select City"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"
+            />
+
+
+
+        </RelativeLayout>
+
+
+
+</RelativeLayout>

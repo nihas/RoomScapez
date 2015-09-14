@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <RelativeLayout
+        android:id="@+id/toper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+    <!-- icon -->
+    <ImageView
+        android:id="@+id/item_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:contentDescription="icon"
+        android:scaleType="centerCrop"
+        android:src="@android:drawable/ic_menu_compass"
+        />
+
+    <!-- title -->
+    <TextView
+        android:id="@+id/item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:text="Current Location"
+        android:layout_marginLeft="8dp"
+        android:textSize="20dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/item_icon"
+        android:layout_toEndOf="@+id/item_icon" />
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

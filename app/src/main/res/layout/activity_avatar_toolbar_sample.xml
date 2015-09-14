@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout android:id="@+id/main_content"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/expanded_toolbar_height"
+      android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.design.widget.CollapsingToolbarLayout android:id="@+id/collapsing_toolbar"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:contentScrim="?attr/colorPrimary"
+          app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+          <ImageView
+              android:id="@+id/main.imageview.placeholder"
+              android:layout_width="match_parent"
+              android:layout_height="300dp"
+              android:scaleType="centerCrop"
+              android:src="@drawable/pattern"
+              android:tint="#11000000"
+              app:layout_collapseMode="parallax"
+              app:layout_collapseParallaxMultiplier="1"
+              />
+
+
+
+            <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
+              android:layout_width="match_parent"
+              android:layout_height="110dp"
+              app:layout_collapseMode="pin"
+              app:popupTheme="@style/AppTheme" />
+
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_gravity="top"
+                android:orientation="vertical"
+                android:gravity="bottom">
+
+
+
+                <ImageView
+                    android:id="@+id/searchCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/textbox"
+
+
+                    />
+            </LinearLayout>
+
+
+
+
+
+            <com.example.collapsingtoolbarlib.CollapsingAvatarToolbar
+                android:id="@+id/stuff_container"
+              android:layout_width="match_parent"
+              android:layout_height="?attr/actionBarSize">
+
+                <ImageView android:id="@id/cat_avatar"
+                  android:layout_width="40dp"
+                  android:layout_height="40dp"
+                    android:visibility="gone"
+                  android:layout_gravity="center_vertical"
+                  android:src="@mipmap/logo" />
+
+                <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="top"
+                  android:layout_marginLeft="16dp"
+                  android:orientation="vertical">
+
+                    <TextView android:id="@id/cat_title"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="roomscapez"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_gravity="center_horizontal"
+                      android:textColor="@android:color/white"
+                      android:textSize="18dp" />
+
+                    <!--<TextView android:id="@+id/subtitle"-->
+                      <!--android:layout_width="wrap_content"-->
+                      <!--android:layout_height="wrap_content"-->
+                      <!--android:text="Subtitle"-->
+                        <!--android:visibility="gone"-->
+                        <!--android:layout_gravity="center_horizontal"-->
+                      <!--android:textColor="#80ffffff"-->
+                      <!--android:textSize="15dp" />-->
+
+
+
+
+                </LinearLayout>
+
+
+            </com.example.collapsingtoolbarlib.CollapsingAvatarToolbar>
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+
+    </android.support.design.widget.AppBarLayout>
+
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/haaai"
+        android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <include layout="@layout/included_sample_content" />
+
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+
+    <!--<android.support.design.widget.FloatingActionButton android:layout_width="wrap_content"-->
+      <!--android:layout_height="wrap_content"-->
+      <!--android:layout_margin="@dimen/fab_margin"-->
+      <!--android:clickable="true"-->
+      <!--android:src="@drawable/abc_btn_radio_material"-->
+      <!--app:layout_anchor="@id/appbar"-->
+      <!--app:layout_anchorGravity="bottom|right|end" />-->
+
+
+
+    <!--<ImageView-->
+        <!--android:id="@+id/searchCity"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:src="@mipmap/textbox"-->
+        <!--app:layout_anchor="@id/haaai"-->
+        <!--android:layout_marginTop="35dp"-->
+        <!--android:paddingBottom="60dp"-->
+
+        <!--/>-->
+
+
+
+</android.support.design.widget.CoordinatorLayout>
+
