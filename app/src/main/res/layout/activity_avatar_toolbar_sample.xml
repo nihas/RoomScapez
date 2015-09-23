@@ -25,10 +25,9 @@
               android:layout_width="match_parent"
               android:layout_height="300dp"
               android:scaleType="centerCrop"
-              android:src="@drawable/pattern"
+              android:src="@drawable/cityscapes"
               android:tint="#11000000"
               app:layout_collapseMode="parallax"
-              app:layout_collapseParallaxMultiplier="1"
               />
 
 
@@ -71,7 +70,7 @@
                   android:layout_height="40dp"
                     android:visibility="gone"
                   android:layout_gravity="center_vertical"
-                  android:src="@mipmap/logo" />
+                  android:src="@mipmap/ic_launcher" />
 
                 <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
@@ -83,13 +82,18 @@
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:text="roomscapez"
+                        android:shadowColor="#000000"
+                        android:shadowRadius="1"
+                        android:shadowDy="1"
+                        android:shadowDx="1"
                         android:layout_marginTop="12dp"
                         android:layout_marginRight="20dp"
                         android:layout_gravity="center_horizontal"
                       android:textColor="@android:color/white"
                       android:textSize="18dp" />
 
-                    <!--<TextView android:id="@+id/subtitle"-->
+
+                <!--<TextView android:id="@+id/subtitle"-->
                       <!--android:layout_width="wrap_content"-->
                       <!--android:layout_height="wrap_content"-->
                       <!--android:text="Subtitle"-->
@@ -115,17 +119,21 @@
 
 
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/haaai"
+    <!--<android.support.v4.widget.NestedScrollView-->
+        <!--android:id="@+id/haaai"-->
+        <!--android:layout_width="match_parent"-->
+      <!--android:layout_height="match_parent"-->
+      <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+
+        <!--<include layout="@layout/included_sample_content" />-->
+        <!-- -->
+    <!--</android.support.v4.widget.NestedScrollView>-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <include layout="@layout/included_sample_content" />
-
-
-
-    </android.support.v4.widget.NestedScrollView>
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
 

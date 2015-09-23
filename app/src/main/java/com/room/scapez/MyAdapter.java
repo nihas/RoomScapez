@@ -4,7 +4,11 @@ package com.room.scapez;
  * Created by Nihas on 01-Aug-15.
  */
 import android.app.Activity;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +16,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
 import com.room.scapez.app.BitmapCache;
@@ -24,13 +31,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<Person> itemsData;
     private RequestQueue mQueue;
     private ImageLoader imageLoader;
+    Context mContext;
 
-    public MyAdapter(List<Person> itemsData, Activity activity) {
+    public MyAdapter(List<Person> itemsData, Context context) {
         this.itemsData = itemsData;
-        mQueue = Volley.newRequestQueue(activity);
-        //imageLoader = RoomScapez.getInstance().getImageLoader();
-        imageLoader = new ImageLoader(mQueue, new BitmapCache());
-        setHasStableIds(true);
+//        mQueue = Volley.newRequestQueue(context);
+        imageLoader = RoomScapez.getInstance().getImageLoader();
+        this.mContext=context;
+//        imageLoader = new ImageLoader(mQueue, new BitmapCache());
+//        setHasStableIds(true);
+
     }
 
 
@@ -45,21 +55,25 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         // create ViewHolder
 
+
         ViewHolder viewHolder = new ViewHolder(itemLayoutView);
         return viewHolder;
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(final ViewHolder viewHolder, int position) {
 
         // - get data from your itemsData at this position
         // - replace the contents of the view with that itemsData
 
         viewHolder.txtViewTitle.setText(itemsData.get(position).getName());
         //viewHolder.imgViewIcon.setImageResource(itemsData.get(position).getPhotoId());
+        imageLoader.get(itemsData.get(position).photoId, ImageLoader.getImageListener(viewHolder.imgViewIcon,
+                R.drawable.first, R.drawable.pattern));
         viewHolder.imgViewIcon.setImageUrl(itemsData.get(position).photoId, imageLoader);
-        viewHolder.imgViewIcon.setDefaultImageResId(R.drawable.first);
+//        viewHolder.imgViewIcon.setImageUrl(itemsData.get(position).photoId, imageLoader);
+//        viewHolder.imgViewIcon.setDefaultImageResId(R.drawable.first);
 
 
 

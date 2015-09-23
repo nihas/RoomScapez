@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -19,7 +20,7 @@ import android.widget.Toast;
 import com.room.scapez.app.RoomScapez;
 
 
-public class SplashActivity extends ActionBarActivity implements LocationListener{
+public class SplashActivity extends AppCompatActivity implements LocationListener{
 
     private static final int SPLASH_TIME_OUT = 3000;
     ConnectionDetector connection;
@@ -155,35 +156,35 @@ public class SplashActivity extends ActionBarActivity implements LocationListene
 //        }
 //    }
 
-    private class GeocoderHandler extends Handler {
-        @Override
-        public void handleMessage(Message message) {
-            final String locationAddress;
-            switch (message.what) {
-                case 1:
-                    Bundle bundle = message.getData();
-                    locationAddress = bundle.getString("local");
-
-                    break;
-                default:
-                    locationAddress = null;
-            }
-            Toast.makeText(getApplicationContext(),locationAddress,Toast.LENGTH_SHORT).show();
-            new Handler().postDelayed(new Runnable() {
-
-                @Override
-                public void run() {
-                    Intent intent = new Intent(SplashActivity.this,
-                            HomeActivity.class);
-                    editor.putString("locality",locationAddress);
-                    editor.commit();
-                    //intent.putExtra("locality",locationAddress);
-                    SplashActivity.this.finish();
-                    startActivity(intent);
-                }
-            }, SPLASH_TIME_OUT);
-        }
-    }
+//    private class GeocoderHandler extends Handler {
+//        @Override
+//        public void handleMessage(Message message) {
+//            final String locationAddress;
+//            switch (message.what) {
+//                case 1:
+//                    Bundle bundle = message.getData();
+//                    locationAddress = bundle.getString("local");
+//
+//                    break;
+//                default:
+//                    locationAddress = null;
+//            }
+//            Toast.makeText(getApplicationContext(),locationAddress,Toast.LENGTH_SHORT).show();
+//            new Handler().postDelayed(new Runnable() {
+//
+//                @Override
+//                public void run() {
+//                    Intent intent = new Intent(SplashActivity.this,
+//                            HomeActivity.class);
+//                    editor.putString("locality",locationAddress);
+//                    editor.commit();
+//                    //intent.putExtra("locality",locationAddress);
+//                    SplashActivity.this.finish();
+//                    startActivity(intent);
+//                }
+//            }, SPLASH_TIME_OUT);
+//        }
+//    }
 
 
     private void showGPSDisabledAlertToUser(){

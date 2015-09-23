@@ -3,7 +3,9 @@
     <color name="primary_color">#48046c</color>
     <color name="primary_color_light">#8118af</color>
 
-
+    <color name="light_grey">#dcdcdc</color>
+    <color name="dark_grey">#808080</color>
+    <color name="ash">#cdcdcd</color>
 
     <color name="primary">#3C515C</color>
     <color name="primary_dark">#390356</color>

@@ -11,8 +11,11 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.room.scapez.activities.ActivityRooms;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +28,12 @@ public class SearchActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     List<Person> persons;
+    ImageView close;
 
     @Override
     public void onBackPressed() {
-//        Intent bakView = new Intent(SearchActivity.this, HomeActivity.class);
-//        startActivity(bakView);
-        finish();
+        super.onBackPressed();
+        overridePendingTransition(R.anim.push_up_in, R.anim.fade_out);
     }
 
     @Override
@@ -39,15 +42,21 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_city);
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                onBackPressed();
+//            }
+//        });
+
+        close=(ImageView)findViewById(R.id.close);
+        close.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 onBackPressed();
             }
         });
-
-
 
         initializeData();
         ListView lv = (ListView)findViewById(R.id.lv);
@@ -57,6 +66,16 @@ public class SearchActivity extends AppCompatActivity {
 
         final RVAdapter adapter = new RVAdapter(this,persons);
         lv.setAdapter(adapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(SearchActivity.this,
+                        ActivityRooms.class);
+                intent.putExtra("location",persons.get(i).getName());
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
 

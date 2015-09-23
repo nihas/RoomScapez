@@ -105,7 +105,7 @@ public class RVAdapter extends BaseAdapter{
             @Override
             public void onClick(View arg0) {
                 // Send single item click data to SingleItemView Class
-                Intent intent = new Intent(mContext, HomeActivity.class);
+                Intent intent = new Intent(mContext, AvatarToolbarSample.class);
                 // Pass all data rank
 //                intent.putExtra("rank",(worldpopulationlist.get(position).getRank()));
                 // Pass all data country
