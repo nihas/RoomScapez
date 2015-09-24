@@ -52,7 +52,7 @@ public class AvatarToolbarSample extends AppCompatActivity {
                     @Override
                     public void onItemClick(View view, int position) {
                         Intent roomIntent=new Intent(AvatarToolbarSample.this, ActivityRooms.class);
-                        roomIntent.putExtra("location",persons.get(position).getName());
+                        roomIntent.putExtra("location1",persons.get(position).getName());
                         startActivity(roomIntent);
                         finish();
                     }

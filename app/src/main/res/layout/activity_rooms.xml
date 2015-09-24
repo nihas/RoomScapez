@@ -28,22 +28,23 @@
             android:text="Indiranager"
             android:textColor="#ffffff"
             android:textSize="20sp"
-            android:textStyle="bold"
             android:layout_marginLeft="20dp"/>
 
         <ImageView
             android:layout_marginLeft="5dp"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="2dp"
             android:tint="#ffffff"
-            android:src="@drawable/down_arrow_orange"/>
+            android:src="@drawable/ic_down_arrow_thin_black"/>
 
         </LinearLayout>
         </android.support.v7.widget.Toolbar>
     <RelativeLayout
+        android:id="@+id/dateLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/ash">
+        android:background="@drawable/bottom_selector_grey">
 
         <TextView
             android:layout_width="match_parent"
@@ -51,8 +52,7 @@
             android:padding="8dp"
             android:text="TONIGHT"
             android:gravity="center"
-            android:textColor="#ffffff"
-            android:background="@drawable/bottom_selector_violet"
+            android:textColor="#000000"
             android:layout_margin="4dp"/>
 
     </RelativeLayout>
@@ -60,6 +60,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="match_parent" />
 
 

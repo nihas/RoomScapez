@@ -59,7 +59,7 @@ public class SearchActivity extends AppCompatActivity {
         });
 
         initializeData();
-        ListView lv = (ListView)findViewById(R.id.lv);
+        ListView lv = (ListView)findViewById(R.id.listView);
 //        rv.setHasFixedSize(true);
 //        LinearLayoutManager llm = new LinearLayoutManager(this);
 //        rv.setLayoutManager(llm);
@@ -71,9 +71,11 @@ public class SearchActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(SearchActivity.this,
                         ActivityRooms.class);
-                intent.putExtra("location",persons.get(i).getName());
+                intent.putExtra("location2", persons.get(i).getName());
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
+//                Toast.makeText(SearchActivity.this,persons.get(i).getName(),Toast.LENGTH_SHORT).show();
             }
         });
 

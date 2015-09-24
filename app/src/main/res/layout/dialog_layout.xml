@@ -1,0 +1,256 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/primary"
+        app:contentInsetEnd="0dp"
+        app:contentInsetStart="0dp">
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/primary">
+
+        <LinearLayout
+            android:id="@+id/one"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="1dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/week1"
+                android:layout_width="wrap_content"
+                android:text="MON"
+                android:textColor="#CCCCCC"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+        <LinearLayout
+            android:id="@+id/date1Layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+        <TextView
+            android:id="@+id/date1"
+            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:text="20"
+            android:textColor="#ffffff"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/two"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="1dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/week2"
+                android:layout_width="wrap_content"
+                android:text="MON"
+                android:textColor="#CCCCCC"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:id="@+id/date2Layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <TextView
+                    android:id="@+id/date2"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:text="20"
+                    android:textColor="#ffffff"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/three"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="1dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/week3"
+                android:layout_width="wrap_content"
+                android:text="MON"
+                android:textColor="#CCCCCC"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:id="@+id/date3Layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <TextView
+                    android:id="@+id/date3"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:text="20"
+                    android:textColor="#ffffff"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/four"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="1dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/week4"
+                android:layout_width="wrap_content"
+                android:text="MON"
+                android:textColor="#CCCCCC"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:id="@+id/date4Layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <TextView
+                    android:id="@+id/date4"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:text="20"
+                    android:textColor="#ffffff"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/five"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="1dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/week5"
+                android:layout_width="wrap_content"
+                android:text="MON"
+                android:textColor="#CCCCCC"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:id="@+id/date5Layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <TextView
+                    android:id="@+id/date5"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:text="20"
+                    android:textColor="#ffffff"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/six"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="1dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/week6"
+                android:layout_width="wrap_content"
+                android:text="MON"
+                android:textColor="#CCCCCC"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:id="@+id/date6Layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <TextView
+                    android:id="@+id/date6"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:text="20"
+                    android:textColor="#ffffff"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/seven"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="1dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/week7"
+                android:layout_width="wrap_content"
+                android:text="MON"
+                android:textColor="#CCCCCC"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:id="@+id/date7Layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <TextView
+                    android:id="@+id/date7"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:text="20"
+                    android:textColor="#ffffff"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

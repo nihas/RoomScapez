@@ -100,27 +100,27 @@ public class RVAdapter extends BaseAdapter{
 
 
         // Listen for ListView Item Click
-        view.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View arg0) {
-                // Send single item click data to SingleItemView Class
-                Intent intent = new Intent(mContext, AvatarToolbarSample.class);
-                // Pass all data rank
-//                intent.putExtra("rank",(worldpopulationlist.get(position).getRank()));
-                // Pass all data country
-                intent.putExtra("city",(persons.get(i).name));
-                // Pass all data population
-//                intent.putExtra("population",(worldpopulationlist.get(position).getPopulation()));
-                // Pass all data flag
-                // Start SingleItemView Class
-                mContext.startActivity(intent);
-                ((SearchActivity)mContext).finish();
-                //Toast.makeText(mContext," "+persons.get(i).name,Toast.LENGTH_SHORT).show();
-
-
-            }
-        });
+//        view.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View arg0) {
+//                // Send single item click data to SingleItemView Class
+//                Intent intent = new Intent(mContext, AvatarToolbarSample.class);
+//                // Pass all data rank
+////                intent.putExtra("rank",(worldpopulationlist.get(position).getRank()));
+//                // Pass all data country
+//                intent.putExtra("city",(persons.get(i).name));
+//                // Pass all data population
+////                intent.putExtra("population",(worldpopulationlist.get(position).getPopulation()));
+//                // Pass all data flag
+//                // Start SingleItemView Class
+//                mContext.startActivity(intent);
+//                ((SearchActivity)mContext).finish();
+//                //Toast.makeText(mContext," "+persons.get(i).name,Toast.LENGTH_SHORT).show();
+//
+//
+//            }
+//        });
 
         return view;
     }
