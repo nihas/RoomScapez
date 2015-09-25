@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -18,9 +18,11 @@
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
+        android:id="@+id/checkinLayout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_below="@+id/toolbar"
         android:background="@color/primary">
 
         <LinearLayout
@@ -246,6 +248,223 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/checkoutLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/toolbar"
+        android:background="@color/primary">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="1dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/checkinWeek"
+                android:layout_width="wrap_content"
+                android:text="MON"
+                android:textColor="#CCCCCC"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <TextView
+                    android:id="@+id/checkindate"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:text="20"
+                    android:textColor="#ffffff"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="1dp"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="#CCCCCC"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:text="TO"
+                    android:textColor="#ffffff"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="1dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/checkOutWeek1"
+                android:layout_width="wrap_content"
+                android:text="MON"
+                android:textColor="#CCCCCC"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <TextView
+                    android:id="@+id/checkOutdate1"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:text="20"
+                    android:textColor="#ffffff"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="1dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/checkOutWeek2"
+                android:layout_width="wrap_content"
+                android:text="MON"
+                android:textColor="#CCCCCC"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <TextView
+                    android:id="@+id/checkOutdate2"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:text="20"
+                    android:textColor="#ffffff"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="1dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/checkOutWeek3"
+                android:layout_width="wrap_content"
+                android:text="MON"
+                android:textColor="#CCCCCC"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <TextView
+                    android:id="@+id/checkOutdate3"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:text="20"
+                    android:textColor="#ffffff"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="1dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/checkOutWeek4"
+                android:layout_width="wrap_content"
+                android:text="MON"
+                android:textColor="#CCCCCC"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <TextView
+                    android:id="@+id/checkOutdate4"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:text="20"
+                    android:textColor="#ffffff"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="1dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/checkOutWeek5"
+                android:layout_width="wrap_content"
+                android:text="MON"
+                android:textColor="#CCCCCC"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+                <TextView
+                    android:id="@+id/checkOutdate5"
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:text="20"
+                    android:textColor="#ffffff"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
 
 
 
@@ -253,4 +472,5 @@
 
     </LinearLayout>
 
-</LinearLayout>
+
+</RelativeLayout>
