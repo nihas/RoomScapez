@@ -18,6 +18,12 @@
             android:src="@mipmap/ic_launcher"
             android:scaleType="centerCrop"/>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@drawable/gradient_bg"
+            android:layout_alignParentBottom="true"/>
+
     <!-- title -->
     <TextView
         android:id="@+id/item_title"
@@ -32,13 +38,9 @@
         android:shadowRadius="1"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
-        android:textSize="23dp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/gradient_bg"
-            android:layout_alignParentBottom="true"/>
+
 
     </RelativeLayout>
 

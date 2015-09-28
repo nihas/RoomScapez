@@ -5,8 +5,15 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -18,15 +25,21 @@ import android.view.animation.TranslateAnimation;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.room.scapez.MyAdapter;
+import com.room.scapez.Person;
 import com.room.scapez.R;
 import com.room.scapez.SearchActivity;
 import com.room.scapez.pojos.CheckinCheckout;
+import com.room.scapez.utils.RecyclerItemClickListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -39,9 +52,13 @@ public class ActivityRooms extends AppCompatActivity implements View.OnClickList
     Bundle extras;
     String location;
     TextView locat;
+    Toolbar toolbar;
+    Dialog dialog;
     LinearLayout locationLayout,date1Layout,date2Layout,date3Layout,date4Layout,date5Layout,date6Layout,date7Layout;
     LinearLayout oneLayout,twoLayout,threeLayout,fourLayout,fiveLayout,sixLayout,sevenLayout;
     LinearLayout checkinLayout,checkoutLayout;
+    LinearLayout checkout1Layout,checkout2Layout,checkout3Layout,checkout4Layout,checkout5Layout;
+    LinearLayout checkoutdate1Layout,checkoutdate2Layout,checkoutdate3Layout,checkoutdate4Layout,checkoutdate5Layout;
     TextView week1,week2,week3,week4,week5,week6,week7;
     TextView dates1,dates2,dates3,dates4,dates5,dates6,dates7;
     TextView checkoutWeek1,checkoutWeek2,checkoutWeek3,checkoutWeek4,checkoutWeek5,checkinWeek;
@@ -49,6 +66,9 @@ public class ActivityRooms extends AppCompatActivity implements View.OnClickList
     RelativeLayout dateLayout;
     Calendar localCalendar;
     CheckinCheckout checkinCheckout;
+    RecyclerView rview;
+    List<Person> persons;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +88,37 @@ public class ActivityRooms extends AppCompatActivity implements View.OnClickList
         locat.setText(location);
         locationLayout.setOnClickListener(this);
         dateLayout.setOnClickListener(this);
+initializeData();
+        rview=(RecyclerView)findViewById(R.id.recyclerView);
+//        initializeData();
+        rview.setLayoutManager(new LinearLayoutManager(this));
+        rview.setHasFixedSize(false);
+
+        MyAdapter adapter = new MyAdapter(persons, this);
+        rview.setAdapter(adapter);
+
+        rview.addOnItemTouchListener(new RecyclerItemClickListener(this,
+                new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent roomIntent = new Intent(ActivityRooms.this, HotelViewActivity.class);
+                        startActivity(roomIntent);
+                        finish();
+                    }
+                }));
+    }
+
+    private void initializeData() {
+        persons = new ArrayList<>();
+        persons.add(new Person("Bangalore", "23 years old", "http://socialventurepartners.org.s3.amazonaws.com/www.socialventurepartners.org/sites/58/2013/05/Bangalore-slider.jpg"));
+        persons.add(new Person("Delhi", "25 years old", "http://wallpapersearchengine.com/wp-content/uploads/2015/06/Delhi-Wallpapers-1.jpg"));
+        persons.add(new Person("Hyderabad", "35 years old", "http://3.bp.blogspot.com/-Ub8csjGTQao/Uih5Xe4ZQxI/AAAAAAAApPQ/gb2QH0H0ndo/s1600/Hyderabad+1080p+Wallpapers+2.jpg"));
+        persons.add(new Person("Kochi", "23 years old", "http://www.k.guruvayur4u.com/images/kumb6.jpg"));
+        persons.add(new Person("Munnar", "25 years old", "http://welcomenri.com/Tourism/Honeymoon/south-india-honeymoon/munnar.jpg"));
+        persons.add(new Person("Thekady", "35 years old", "http://farm3.static.flickr.com/2795/4181596499_3e4998d663_b.jpg"));
+//        persons.add(new Person("Emma Wilson", "23 years old", "http://selfieyo.com/wp-content/uploads/2015/03/selfiegood1.jpg"));
+//        persons.add(new Person("Lavery Maiss", "25 years old", "https://fs02.androidpit.info/a/ee/01/selfie-cam-vintage-edition-ee019f-h900.jpg"));
+//        persons.add(new Person("Lillie Watts", "35 years old", "https://nyoobserver.files.wordpress.com/2015/03/selfie-stick.jpg"));
     }
 
     @Override
@@ -78,7 +129,7 @@ public class ActivityRooms extends AppCompatActivity implements View.OnClickList
                 startActivity(cityIntent);
                 break;
             case R.id.dateLayout:
-                Dialog dialog  = new Dialog(this);
+                dialog  = new Dialog(this);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
                 dialog.setContentView(R.layout.dialog_layout);
@@ -121,6 +172,20 @@ public class ActivityRooms extends AppCompatActivity implements View.OnClickList
                 checkoutLayout=(LinearLayout)dialog.findViewById(R.id.checkoutLayout);
                 checkoutLayout.setVisibility(View.GONE);
 
+                toolbar=(Toolbar)dialog.findViewById(R.id.toolbar1);
+                toolbar.setTitle("Select Check in");
+                toolbar.setTitleTextColor( getResources().getColor(android.R.color.white));
+                Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_arrow_back, null);
+                drawable = DrawableCompat.wrap(drawable);
+                DrawableCompat.setTint(drawable, getResources().getColor(android.R.color.white));
+                toolbar.setNavigationIcon(drawable);
+                toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+
                 week1=(TextView)dialog.findViewById(R.id.week1);
                 week2=(TextView)dialog.findViewById(R.id.week2);
                 week3=(TextView)dialog.findViewById(R.id.week3);
@@ -162,6 +227,23 @@ public class ActivityRooms extends AppCompatActivity implements View.OnClickList
                 checkoutdates3=(TextView)dialog.findViewById(R.id.checkOutdate3);
                 checkoutdates4=(TextView)dialog.findViewById(R.id.checkOutdate4);
                 checkoutdates5=(TextView)dialog.findViewById(R.id.checkOutdate5);
+
+                checkoutdate1Layout=(LinearLayout)dialog.findViewById(R.id.checkOutdate1Layout);
+                checkoutdate2Layout=(LinearLayout)dialog.findViewById(R.id.checkOutdate2Layout);
+                checkoutdate3Layout=(LinearLayout)dialog.findViewById(R.id.checkOutdate3Layout);
+                checkoutdate4Layout=(LinearLayout)dialog.findViewById(R.id.checkOutdate4Layout);
+                checkoutdate5Layout=(LinearLayout)dialog.findViewById(R.id.checkOutdate5Layout);
+
+                checkout1Layout=(LinearLayout)dialog.findViewById(R.id.checkOut1Layout);
+                checkout2Layout=(LinearLayout)dialog.findViewById(R.id.checkOut2Layout);
+                checkout3Layout=(LinearLayout)dialog.findViewById(R.id.checkOut3Layout);
+                checkout4Layout=(LinearLayout)dialog.findViewById(R.id.checkOut4Layout);
+                checkout5Layout=(LinearLayout)dialog.findViewById(R.id.checkOut5Layout);
+                checkout1Layout.setOnClickListener(this);
+                checkout2Layout.setOnClickListener(this);
+                checkout3Layout.setOnClickListener(this);
+                checkout4Layout.setOnClickListener(this);
+                checkout5Layout.setOnClickListener(this);
 
                 oneLayout=(LinearLayout)dialog.findViewById(R.id.one);
                 twoLayout=(LinearLayout)dialog.findViewById(R.id.two);
@@ -278,8 +360,80 @@ public class ActivityRooms extends AppCompatActivity implements View.OnClickList
                 checkinCheckout.setCheckinWeek(week7.getText().toString());
                 checkinCheckout.setCheckinYear(localCalendar.get(Calendar.YEAR));
                 break;
+            case R.id.checkOut1Layout:
+                checkoutdate1Layout.setBackgroundResource(R.drawable.circle_border);
+                checkoutdate2Layout.setBackgroundResource(0);
+                checkoutdate3Layout.setBackgroundResource(0);
+                checkoutdate4Layout.setBackgroundResource(0);
+                checkoutdate5Layout.setBackgroundResource(0);
+                checkinCheckout.setCheckoutDate(Integer.valueOf(checkoutdates1.getText().toString()));
+                checkinCheckout.setCheckoutMonth(getMonthName(localCalendar.get(Calendar.MONTH) + 1));
+                checkinCheckout.setCheckoutWeek(checkoutWeek1.getText().toString());
+                checkinCheckout.setCheckoutYear(localCalendar.get(Calendar.YEAR));
+                UpdateViews();
+                break;
+            case R.id.checkOut2Layout:
+                checkoutdate1Layout.setBackgroundResource(0);
+                checkoutdate2Layout.setBackgroundResource(R.drawable.circle_border);
+                checkoutdate3Layout.setBackgroundResource(0);
+                checkoutdate4Layout.setBackgroundResource(0);
+                checkoutdate5Layout.setBackgroundResource(0);
+                checkinCheckout.setCheckoutDate(Integer.valueOf(checkoutdates2.getText().toString()));
+                checkinCheckout.setCheckoutMonth(getMonthName(localCalendar.get(Calendar.MONTH) + 1));
+                checkinCheckout.setCheckoutWeek(checkoutWeek2.getText().toString());
+                checkinCheckout.setCheckoutYear(localCalendar.get(Calendar.YEAR));
+                UpdateViews();
+                break;
+            case R.id.checkOut3Layout:
+                checkoutdate1Layout.setBackgroundResource(0);
+                checkoutdate2Layout.setBackgroundResource(0);
+                checkoutdate3Layout.setBackgroundResource(R.drawable.circle_border);
+                checkoutdate4Layout.setBackgroundResource(0);
+                checkoutdate5Layout.setBackgroundResource(0);
+                checkinCheckout.setCheckoutDate(Integer.valueOf(checkoutdates3.getText().toString()));
+                checkinCheckout.setCheckoutMonth(getMonthName(localCalendar.get(Calendar.MONTH) + 1));
+                checkinCheckout.setCheckoutWeek(checkoutWeek3.getText().toString());
+                checkinCheckout.setCheckoutYear(localCalendar.get(Calendar.YEAR));
+                UpdateViews();
+                break;
+            case R.id.checkOut4Layout:
+                checkoutdate1Layout.setBackgroundResource(0);
+                checkoutdate2Layout.setBackgroundResource(0);
+                checkoutdate3Layout.setBackgroundResource(0);
+                checkoutdate4Layout.setBackgroundResource(R.drawable.circle_border);
+                checkoutdate5Layout.setBackgroundResource(0);
+                checkinCheckout.setCheckoutDate(Integer.valueOf(checkoutdates4.getText().toString()));
+                checkinCheckout.setCheckoutMonth(getMonthName(localCalendar.get(Calendar.MONTH) + 1));
+                checkinCheckout.setCheckoutWeek(checkoutWeek4.getText().toString());
+                checkinCheckout.setCheckoutYear(localCalendar.get(Calendar.YEAR));
+                UpdateViews();
+                break;
+            case R.id.checkOut5Layout:
+                checkoutdate1Layout.setBackgroundResource(0);
+                checkoutdate2Layout.setBackgroundResource(0);
+                checkoutdate3Layout.setBackgroundResource(0);
+                checkoutdate4Layout.setBackgroundResource(0);
+                checkoutdate5Layout.setBackgroundResource(R.drawable.circle_border);
+                checkinCheckout.setCheckoutDate(Integer.valueOf(checkoutdates5.getText().toString()));
+                checkinCheckout.setCheckoutMonth(getMonthName(localCalendar.get(Calendar.MONTH) + 1));
+                checkinCheckout.setCheckoutWeek(checkoutWeek5.getText().toString());
+                checkinCheckout.setCheckoutYear(localCalendar.get(Calendar.YEAR));
+                UpdateViews();
+                break;
 
         }
+    }
+
+    private void UpdateViews() {
+        TextView dateText=(TextView)findViewById(R.id.dateDisplay);
+        dateText.setText(getformatedOneDigitDate(checkinCheckout.getCheckinDate()) + " " + checkinCheckout.getCheckinWeek() + " - "
+                + getformatedOneDigitDate(checkinCheckout.getCheckoutDate()) + " " + checkinCheckout.getCheckoutWeek());
+        Handler mHandler=new Handler();
+        mHandler.postDelayed(new Runnable() {
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 500);
     }
 
     private void setDates(int currentDay) {
@@ -395,10 +549,18 @@ public class ActivityRooms extends AppCompatActivity implements View.OnClickList
         }
     }
 
+
+
     private void animateLayout(LinearLayout clicked,LinearLayout one,LinearLayout two,LinearLayout three,LinearLayout four,
                                LinearLayout five,LinearLayout six) {
-//        Animation moveLeft = AnimationUtils.loadAnimation(this, R.anim.translate);
-        TranslateAnimation anim = new TranslateAnimation(0f, 0f, 0f, -100f);  // might need to review the docs
+    // GETTING THE LEFT POINT OF THE SCREEN
+        int[] viewLocation = new int[2];
+        clicked.getLocationInWindow(viewLocation);
+        int[] rootLocation = new int[2];
+        checkinLayout.getLocationInWindow(rootLocation);
+        int left = viewLocation[0] - rootLocation[0];
+
+        TranslateAnimation anim = new TranslateAnimation(0f, -left, 0f, 0f);  // might need to review the docs
         anim.setStartOffset(100);
         anim.setDuration(500); // set how long you want the animation
 
@@ -420,13 +582,12 @@ public class ActivityRooms extends AppCompatActivity implements View.OnClickList
 
             @Override
             public void onAnimationEnd(Animation animation) {
+                toolbar.setTitle("Select Check out");
                 checkinLayout.setVisibility(View.GONE);
                 checkoutLayout.setVisibility(View.VISIBLE);
                 checkinWeek.setText(checkinCheckout.getCheckinWeek());
-                checkinDate.setText(String.valueOf(checkinCheckout.getCheckinDate()));
+                checkinDate.setText(getformatedOneDigitDate(checkinCheckout.getCheckinDate()));
                 makeEvrythingVisible();
-                TranslateAnimation anim = new TranslateAnimation(0f, 0f, -110f, 0f);  // might need to review the docs
-                anim.setDuration(500);
                 Calendar myCal=Calendar.getInstance(TimeZone.getDefault());
                 SimpleDateFormat format = new SimpleDateFormat("MMM dd,yyyy", Locale.ENGLISH);
                 try {
@@ -434,23 +595,46 @@ public class ActivityRooms extends AppCompatActivity implements View.OnClickList
                     myCal.setTime(theDate);
                     myCal.add(Calendar.DATE, 1);
                     checkoutWeek1.setText(getWeekName(myCal.get(Calendar.DAY_OF_WEEK)));
-                    checkoutdates1.setText(String.valueOf(myCal.get(Calendar.DATE)));
+                    checkoutdates1.setText(getformatedOneDigitDate(myCal.get(Calendar.DATE)));
                     myCal.add(Calendar.DATE, 1);
                     checkoutWeek2.setText(getWeekName(myCal.get(Calendar.DAY_OF_WEEK)));
-                    checkoutdates2.setText(String.valueOf(myCal.get(Calendar.DATE)));
+                    checkoutdates2.setText(getformatedOneDigitDate(myCal.get(Calendar.DATE)));
                     myCal.add(Calendar.DATE, 1);
                     checkoutWeek3.setText(getWeekName(myCal.get(Calendar.DAY_OF_WEEK)));
-                    checkoutdates3.setText(String.valueOf(myCal.get(Calendar.DATE)));
+                    checkoutdates3.setText(getformatedOneDigitDate(myCal.get(Calendar.DATE)));
                     myCal.add(Calendar.DATE, 1);
                     checkoutWeek4.setText(getWeekName(myCal.get(Calendar.DAY_OF_WEEK)));
-                    checkoutdates4.setText(String.valueOf(myCal.get(Calendar.DATE)));
+                    checkoutdates4.setText(getformatedOneDigitDate(myCal.get(Calendar.DATE)));
                     myCal.add(Calendar.DATE, 1);
                     checkoutWeek5.setText(getWeekName(myCal.get(Calendar.DAY_OF_WEEK)));
-                    checkoutdates5.setText(String.valueOf(myCal.get(Calendar.DATE)));
+                    checkoutdates5.setText(getformatedOneDigitDate(myCal.get(Calendar.DATE)));
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                checkoutLayout.setAnimation(anim);
+                TranslateAnimation anim1 = new TranslateAnimation(0f, 0f, -100f, 0f);  // might need to review the docs
+                anim1.setDuration(500);
+//                toLayout.setAnimation(anim1);
+                TranslateAnimation anim2 = new TranslateAnimation(0f, 0f, -100f, 0f);  // might need to review the docs
+                anim2.setStartOffset(50);
+                anim2.setDuration(500);
+                checkout1Layout.setAnimation(anim2);
+                TranslateAnimation anim3 = new TranslateAnimation(0f, 0f, -100f, 0f);  // might need to review the docs
+                anim3.setStartOffset(100);
+                anim3.setDuration(500);
+                checkout2Layout.setAnimation(anim3);
+                TranslateAnimation anim4 = new TranslateAnimation(0f, 0f, -100f, 0f);  // might need to review the docs
+                anim4.setStartOffset(150);
+                anim4.setDuration(500);
+                checkout3Layout.setAnimation(anim4);
+                TranslateAnimation anim5 = new TranslateAnimation(0f, 0f, -100f, 0f);  // might need to review the docs
+                anim5.setStartOffset(200);
+                anim5.setDuration(500);
+                checkout4Layout.setAnimation(anim5);
+                TranslateAnimation anim6 = new TranslateAnimation(0f, 0f, -100f, 0f);  // might need to review the docs
+                anim6.setStartOffset(250);
+                anim6.setDuration(500);
+                checkout5Layout.setAnimation(anim6);
+
 
 
             }
@@ -506,6 +690,17 @@ public class ActivityRooms extends AppCompatActivity implements View.OnClickList
         sevenLayout.setVisibility(View.VISIBLE);
 
     }
+
+    public String getformatedOneDigitDate(int digi){
+        if(digi>0 && digi<10){
+//            String num=String.format("%02d",digi);
+            return "0"+digi;
+        }else
+            return String.valueOf(digi);
+    }
+
+
+
 
 
 }

@@ -1,0 +1,18 @@
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="180dp">
+
+<fragment
+    android:id="@+id/map"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    tools:layout="@layout/map_view"
+    class="com.room.scapez.fragments.MapFragment"/>
+
+
+
+</RelativeLayout>
