@@ -27,13 +27,12 @@
             android:ellipsize="end"
             android:text="Indiranager"
             android:textColor="#ffffff"
-            android:textSize="20sp"
-            android:layout_marginLeft="20dp"/>
+            android:textSize="20sp"/>
 
         <ImageView
             android:layout_marginLeft="5dp"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginTop="2dp"
             android:tint="#ffffff"
             android:src="@drawable/ic_down_arrow_thin_black"/>
@@ -44,7 +43,7 @@
         android:id="@+id/dateLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bottom_selector_grey">
+        android:background="@drawable/bottom_selector_border">
 
         <TextView
             android:id="@+id/dateDisplay"
@@ -52,8 +51,9 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:text="TONIGHT"
+            android:textStyle="bold"
             android:gravity="center"
-            android:textColor="#000000"
+            android:textColor="#ffffff"
             android:layout_margin="4dp"/>
 
     </RelativeLayout>

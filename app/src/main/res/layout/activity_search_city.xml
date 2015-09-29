@@ -30,8 +30,8 @@
 
             <ImageView
                 android:id="@+id/close"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:src="@drawable/ic_cross"
                 android:padding="12dp"
                 android:background="@drawable/ripple_grey"
@@ -68,8 +68,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/search_city"
+        <AutoCompleteTextView
+            android:id="@+id/autocomplete_places"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Start typing location..."
@@ -77,7 +77,7 @@
             android:singleLine="true"
             android:paddingTop="12dp"
             android:paddingLeft="40dp"
-            android:paddingRight="8dp"
+            android:paddingRight="40dp"
             android:background="@null"
             android:paddingBottom="12dp"/>
 
@@ -90,10 +90,21 @@
             android:tint="#CCCCCC"
             android:layout_marginLeft="6dp"/>
 
+        <ImageView
+            android:id="@+id/button_clear"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_cross"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:tint="#CCCCCC"
+            android:padding="2dp"
+            android:layout_marginRight="6dp"/>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_below="@+id/search_city"
+            android:layout_below="@+id/autocomplete_places"
             android:background="@color/primary_color"/>
 
     </RelativeLayout>
@@ -103,7 +114,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="2dp"
-    android:background="#CCCCCC">
+    android:background="#CCCCCC"
+        android:visibility="gone">
 
     </ListView>
 

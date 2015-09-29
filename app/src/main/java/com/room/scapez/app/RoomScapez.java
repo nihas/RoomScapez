@@ -3,12 +3,16 @@ package com.room.scapez.app;
 import android.app.Application;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v4.util.LruCache;
 import android.text.TextUtils;
+import android.view.Gravity;
+import android.widget.Toast;
 
 import com.android.volley.Cache;
 import com.android.volley.Network;
@@ -22,6 +26,7 @@ import com.android.volley.toolbox.Volley;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Set;
 
 /**
  * Created by Nihas on 25-Jul-15.
@@ -32,9 +37,9 @@ public class RoomScapez extends Application {
     private ImageLoader mImageLoader;
     public static final String TAG = RoomScapez.class.getSimpleName();
     public static Typeface font_regular,font_bold,font_hiddle,font_hiddle_bold;
-
+    private static Context context;
     private static RoomScapez mInstance;
-
+    public static Toast toast;
     public static String sharedPreferencesName = "RoomScapez";
 
 
@@ -45,7 +50,7 @@ public class RoomScapez extends Application {
 
     public void onCreate() {
         super.onCreate();
-//        context = this;
+        context = this;
         mInstance=this;
         font_regular=Typeface.createFromAsset(getAssets(),"AGENCYR.TTF");
 //        font_hiddle=Typeface.createFromAsset(getAssets(),"fonts/eurof35.ttf");
@@ -104,5 +109,81 @@ public class RoomScapez extends Application {
                         MediaStore.Files.FileColumns.DATA + "=?", new String[]{absolutePath});
             }
         }
+    }
+
+    public static void showAToast(String st) {
+        try {
+            toast.getView().isShown();
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.setText(st);
+            //toast = Toast.makeText(context, st, Toast.LENGTH_SHORT);
+        } catch (Exception e) { // invisible if exception
+            toast = Toast.makeText(context, st, Toast.LENGTH_SHORT);
+        }
+        toast.show();
+    }
+
+    public static void saveToPreferences(Context context, String preferenceName, String preferenceValue) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(preferenceName, preferenceValue);
+        editor.apply();
+    }
+
+    public static void saveToPreferences(Context context, String preferenceName, int preferenceValue) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(preferenceName, preferenceValue);
+        editor.apply();
+    }
+    public static void saveToPreferences(Context context, String preferenceName, boolean preferenceValue) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(preferenceName, preferenceValue);
+        editor.apply();
+    }
+    public static void saveToPreferences(Context context, String preferenceName, Float preferenceValue) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putFloat(preferenceName, preferenceValue);
+        editor.apply();
+    }
+    public static void saveToPreferences(Context context, String preferenceName, Set<String> preferenceValue) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putStringSet(preferenceName, preferenceValue);
+        editor.apply();
+    }
+
+
+    public static Set<String> readFromPreferences(Context context, String preferenceName, Set<String> defaultValue) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        return sharedPreferences.getStringSet(preferenceName, defaultValue);
+    }
+
+
+    public static String readFromPreferences(Context context, String preferenceName, String defaultValue) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        return sharedPreferences.getString(preferenceName, defaultValue);
+    }
+
+    public static int readFromPreferences(Context context, String preferenceName, int defaultValue) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        return sharedPreferences.getInt(preferenceName, defaultValue);
+    }
+    public static boolean readFromPreferences(Context context, String preferenceName, boolean defaultValue) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        return sharedPreferences.getBoolean(preferenceName, defaultValue);
+    }
+    public static float readFromPreferences(Context context, String preferenceName, float defaultValue) {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        return sharedPreferences.getFloat(preferenceName, defaultValue);
+    }
+
+    public static void clearSharedPrefData(Context context){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
     }
 }

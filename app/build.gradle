@@ -29,6 +29,6 @@ dependencies {
     compile project(':collapsingtoolbarlib')
 //    compile project(':smarttab')
     compile files('libs/volley.jar')
-    compile 'com.google.android.gms:play-services:7.5.0'
+    compile 'com.google.android.gms:play-services:8.1.0'
     compile 'com.jakewharton:butterknife:5.1.1'
 }

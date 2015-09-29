@@ -3,6 +3,7 @@ package com.room.scapez.activities;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -52,7 +53,7 @@ public class ActivityRooms extends AppCompatActivity implements View.OnClickList
     Bundle extras;
     String location;
     TextView locat;
-    Toolbar toolbar;
+    Toolbar toolbarDialog,toolbarActivity;
     Dialog dialog;
     LinearLayout locationLayout,date1Layout,date2Layout,date3Layout,date4Layout,date5Layout,date6Layout,date7Layout;
     LinearLayout oneLayout,twoLayout,threeLayout,fourLayout,fiveLayout,sixLayout,sevenLayout;
@@ -82,6 +83,7 @@ public class ActivityRooms extends AppCompatActivity implements View.OnClickList
         else
             location=extras.getString("location2");
 
+
         locat=(TextView)findViewById(R.id.locationName);
         locationLayout=(LinearLayout)findViewById(R.id.locationLayout);
         dateLayout=(RelativeLayout)findViewById(R.id.dateLayout);
@@ -103,7 +105,6 @@ initializeData();
                     public void onItemClick(View view, int position) {
                         Intent roomIntent = new Intent(ActivityRooms.this, HotelViewActivity.class);
                         startActivity(roomIntent);
-                        finish();
                     }
                 }));
     }
@@ -172,14 +173,14 @@ initializeData();
                 checkoutLayout=(LinearLayout)dialog.findViewById(R.id.checkoutLayout);
                 checkoutLayout.setVisibility(View.GONE);
 
-                toolbar=(Toolbar)dialog.findViewById(R.id.toolbar1);
-                toolbar.setTitle("Select Check in");
-                toolbar.setTitleTextColor( getResources().getColor(android.R.color.white));
+                toolbarDialog=(Toolbar)dialog.findViewById(R.id.toolbar1);
+                toolbarDialog.setTitle("Select Check in");
+                toolbarDialog.setTitleTextColor( getResources().getColor(android.R.color.white));
                 Drawable drawable = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_arrow_back, null);
                 drawable = DrawableCompat.wrap(drawable);
                 DrawableCompat.setTint(drawable, getResources().getColor(android.R.color.white));
-                toolbar.setNavigationIcon(drawable);
-                toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                toolbarDialog.setNavigationIcon(drawable);
+                toolbarDialog.setNavigationOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         dialog.dismiss();
@@ -582,7 +583,7 @@ initializeData();
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                toolbar.setTitle("Select Check out");
+                toolbarDialog.setTitle("Select Check out");
                 checkinLayout.setVisibility(View.GONE);
                 checkoutLayout.setVisibility(View.VISIBLE);
                 checkinWeek.setText(checkinCheckout.getCheckinWeek());
