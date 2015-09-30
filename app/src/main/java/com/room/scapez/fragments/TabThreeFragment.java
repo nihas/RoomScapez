@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.room.scapez.R;
-import com.room.scapez.app.RoomScapez;
 import com.room.scapez.pojos.AmenitiesPojo;
 
 import java.util.List;
@@ -23,16 +22,16 @@ import java.util.List;
 /**
  * Created by hp1 on 21-01-2015.
  */
-public class TabOneFragment extends Fragment {
+public class TabThreeFragment extends Fragment {
 
     static AmenitiesPojo amenitesPojo;
     LinearLayout amenitesLayout;
 
 
 
-    public static final TabOneFragment newInstance(List<AmenitiesPojo> amenites)
+    public static final TabThreeFragment newInstance(List<AmenitiesPojo> amenites)
     {
-        TabOneFragment f = new TabOneFragment();
+        TabThreeFragment f = new TabThreeFragment();
         amenitesPojo=new AmenitiesPojo();
         amenitesPojo.setAmenites(amenites);
 //        Bundle bdl = new Bundle(2);
@@ -47,7 +46,7 @@ public class TabOneFragment extends Fragment {
         amenitesLayout=(LinearLayout)v.findViewById(R.id.amenitesLayout);
 
         for(int i=0;i<amenitesPojo.getAmenites().size();i++) {
-            if(amenitesPojo.getAmenites().get(i).getCategory()==1){
+            if(amenitesPojo.getAmenites().get(i).getCategory()==3){
             LinearLayout horiLayout = new LinearLayout(getActivity().getApplicationContext());
             LinearLayout.LayoutParams lp1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             horiLayout.setLayoutParams(lp1);

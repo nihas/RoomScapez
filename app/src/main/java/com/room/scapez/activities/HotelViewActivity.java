@@ -63,10 +63,12 @@ public class HotelViewActivity extends AppCompatActivity {
         list.add(new AmenitiesPojo("Juice Bar", R.drawable.juice_bar,1));
         list.add(new AmenitiesPojo("Juice Bar", R.drawable.juice_bar,1));
         list.add(new AmenitiesPojo("Juice Bar", R.drawable.juice_bar,1));
-        list.add(new AmenitiesPojo("Juice Bar",R.drawable.juice_bar,1));
-        list.add(new AmenitiesPojo("Juice Bar", R.drawable.juice_bar,1));
-        list.add(new AmenitiesPojo("Juice Bar", R.drawable.juice_bar,1));
-        list.add(new AmenitiesPojo("Juice Bar", R.drawable.juice_bar,1));
+
+
+        list.add(new AmenitiesPojo("Juice Bar",R.drawable.juice_bar,2));
+        list.add(new AmenitiesPojo("Juice Bar",R.drawable.juice_bar,2));
+        list.add(new AmenitiesPojo("Juice Bar",R.drawable.juice_bar,2));
+        list.add(new AmenitiesPojo("Juice Bar", R.drawable.juice_bar,3));
 
 
         return list;

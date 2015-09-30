@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.room.scapez.fragments.TabOneFragment;
+import com.room.scapez.fragments.TabThreeFragment;
+import com.room.scapez.fragments.TabTwoFragment;
 import com.room.scapez.pojos.AmenitiesPojo;
 
 import java.util.ArrayList;
@@ -45,11 +47,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         }
         else if(position == 1)            // As we are having 2 tabs if the position is now 0 it must be 1 so we are returning second tab
         {
-            TabOneFragment tab2 = new TabOneFragment();
+            TabTwoFragment tab2 = TabTwoFragment.newInstance(amenites);
             return tab2;
         }else{
-            TabOneFragment tab2 = new TabOneFragment();
-            return tab2;
+            TabThreeFragment tab3 = TabThreeFragment.newInstance(amenites);
+            return tab3;
         }
 
 
